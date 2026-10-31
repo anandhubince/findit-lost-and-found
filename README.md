@@ -36,8 +36,8 @@ findit/
 ├── categories.html
 ├── about.html
 ├── contact.html
-├── css/style.css
-└── js/script.js
+├── style.css
+└── script.js
 ```
 
 ## Run it locally
