@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FindIt – Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Lost it? <em>Find it.</em> Found it? Post it.</h1>
+      <p>FindIt is a community board that helps people get lost items back. Search the reports, or post your own in a minute.</p>
+      <form class="searchbar" id="search-form" role="search">
+        <input id="search" type="search" placeholder="Search wallet, keys, phone, place…" aria-label="Search items">
+        <button class="btn yellow" type="submit">Search</button>
+      </form>
+      <div class="hero-actions">
+        <a class="btn pink" href="report.html?type=Lost">I lost something</a>
+        <a class="btn yellow" href="report.html?type=Found">I found something</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head"><h2>Recently lost</h2><a href="lost.html">See all lost items</a></div>
+      <ul class="grid" id="recent-lost"></ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head"><h2>Recently found</h2><a href="found.html">See all found items</a></div>
+      <ul class="grid" id="recent-found"></ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head"><h2>How FindIt works</h2></div>
+      <ol class="steps">
+        <li><h3>Post a report</h3><p>Add the item, the place, the date and a way to contact you.</p></li>
+        <li><h3>Search the board</h3><p>Look through lost and found reports by name, place or category.</p></li>
+        <li><h3>Connect and return</h3><p>Contact the other person, then mark the item as returned.</p></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

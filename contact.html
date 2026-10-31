@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact – FindIt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="wrap">
+  <div class="page-head">
+    <h1>Contact us</h1>
+    <p>Have a question or an idea for FindIt? Send us a message.</p>
+  </div>
+
+  <form class="form-card" id="contact-form" novalidate>
+    <div class="field" id="g-name">
+      <label for="name">Your name</label>
+      <input type="text" id="name" maxlength="60" placeholder="Anandhu">
+      <span class="msg" data-for="name"></span>
+    </div>
+
+    <div class="field" id="g-email">
+      <label for="email">Your email</label>
+      <input type="email" id="email" maxlength="80" placeholder="name@example.com">
+      <span class="msg" data-for="email"></span>
+    </div>
+
+    <div class="field" id="g-message">
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" maxlength="500" placeholder="Write your message here"></textarea>
+      <span class="msg" data-for="message"></span>
+    </div>
+
+    <button type="submit" class="btn pink">Send message</button>
+  </form>
+
+  <div class="success" id="success" role="status" hidden></div>
+</main>
+
+<script src="script.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+
+  function setError(id, text) {
+    document.querySelector('.msg[data-for="' + id + '"]').textContent = text;
+    $("g-" + id).classList.toggle("invalid", Boolean(text));
+  }
+
+  $("contact-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("name").value.trim();
+    const email = $("email").value.trim();
+    const message = $("message").value.trim();
+    let ok = true;
+
+    if (name.length < 2) { setError("name", "Enter your name."); ok = false; } else setError("name", "");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError("email", "Enter a valid email address."); ok = false; } else setError("email", "");
+    if (message.length < 10) { setError("message", "Write at least 10 characters."); ok = false; } else setError("message", "");
+    if (!ok) { document.querySelector(".invalid input, .invalid textarea").focus(); return; }
+
+    /* Demo: the message is saved in this browser only. A real site needs a server to send it. */
+    try {
+      const saved = JSON.parse(localStorage.getItem("findit-messages") || "[]");
+      saved.push({ name, email, message, date: new Date().toISOString() });
+      localStorage.setItem("findit-messages", JSON.stringify(saved));
+    } catch (err) { /* ignore */ }
+
+    const box = $("success");
+    box.hidden = false;
+    box.replaceChildren();
+    const title = document.createElement("strong");
+    title.textContent = "Thank you, " + name + ".";
+    box.append(title, " Your message was received. This demo site saves it in your browser only.");
+    $("contact-form").reset();
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+</script>
+</body>
+</html>
