@@ -2,7 +2,7 @@
 
 A responsive Lost & Found web app built with **HTML, CSS and JavaScript** (no frameworks, no backend).
 
-**Live demo:** https://anandhubince.github.io/findit/
+**Live demo:** https://anandhubince.github.io/findit-lost-and-found/
 
 ## Screenshots
 
